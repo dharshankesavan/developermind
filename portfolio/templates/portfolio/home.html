@@ -4,31 +4,59 @@
 
 {% block content %}
 
-<div class="jumbotron">
-    <div class="container">
-        <h1 class="display-3">Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a
-            jumbotron and three supporting pieces of content. Use it as a starting point to create something more
-            unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+<!-- Jumbotron -->
+<div class="jumbotron card card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Others/gradient1.jpg);">
+  <div class="text-white text-center py-5 px-4">
+    <div>
+      <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong>A Place for learning Programming and new topics</strong></h2>
+      <p class="mx-5 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
+        optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos. Odit sed qui, dolorum!
+      </p>
+      <a class="btn btn-outline-white btn-md" href="{% url 'blog:all_blogs' %}"><i class="fas fa-laptop"></i> View Blogs</a>
     </div>
+  </div>
 </div>
+<!-- Jumbotron -->
+
+
 <h2 class="mt-5">Portfolio</h2>
 <hr>
-<div class="container">
-    <div class="row">
-        {% for project in projects %}
-        <div class="col-md-4">
+
+<!-- Card deck -->
+<div class="card-deck">
+    {% for project in projects %}
+    <!-- Card -->
+    <div class="card mb-4">
+
+        <!--Card image-->
+        <div class="view overlay">
+            <img class="card-img-top" src={{ project.image.url }}
+                 alt="Card image cap">
+            <a href="#!">
+                <div class="mask rgba-white-slight"></div>
+            </a>
+        </div>
+
+        <!--Card content-->
+        <div class="card-body">
+
+            <!--Title-->
+            <h4 class="card-title">{{ project.title }}</h4>
+            <!--Text-->
+            <p class="card-text">{{ project.description }}</p>
+            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
             {% if project.url %}
             <a href="{{ project.url }}">
-                <img src="{{ project.image.url }}" class="rounded mx-auto d-block" height="200" width="200">
+                <button type="button" class="btn btn-light-blue btn-md">Read more</button>
             </a>
             {% endif %}
-            <h2>{{ project.title }}</h2>
-            <p>{{ project.description }}</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
         </div>
-        {% endfor %}
+
     </div>
+    <!-- Card -->
+    {% endfor %}
 </div>
+<!-- Card deck -->
+
+
 {% endblock %}
