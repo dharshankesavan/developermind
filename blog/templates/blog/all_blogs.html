@@ -1,51 +1,62 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
-    <title>Blogs -DHARSHAN</title>
-</head>
-<body>
 {% extends "portfolio/base.html" %}
 
 {% load static %}
 
 {% block content %}
-<h1>Dharshan has written {{ all_blogs.count }} blog{{ all_blogs.count|pluralize }}</h1>
+<div class="container mt-5">
+    <!--Section: Content-->
+    <section class="dark-grey-text">
 
-<h1 id="blogtitle" class="font-weight-bold text-center">Blog</h1>
+        <!-- Section heading -->
+        <h2 class="text-center font-weight-bold mb-4 pb-2">Blogs from the Author</h2>
+        <!-- Section description -->
+        <p class="text-center mx-auto w-responsive mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum
+            porro a pariatur veniam.</p>
 
-<h3 class="text-center mb-5">Nick has written {{ blogs.count }} blog{{ blogs.count|pluralize }}</h3>
+        <!-- Grid row -->
 
-{% for blog in all_blogs %}
-<div class="row justify-content-center my-3">
-  <div class="col-md-10">
-    <a href="{% url 'blog:detail' blog.id %}">
-      <h2>{{ blog.title }}</h2>
-    </a>
-    <h5 class="text-muted">{{ blog.date|date:'M d Y'|upper }}</h5>
-    <h4>{{ blog.description|striptags|truncatechars:100 }}</h4>
-  </div>
+        {% for blog in all_blogs %}
+        <div class="row align-items-center">
+            <!-- Grid column -->
+            <div class="col-lg-5 col-xl-4">
+
+                <!-- Featured image -->
+                <div class="view overlay rounded z-depth-1-half mb-lg-0 mb-4">
+                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/49.jpg"
+                         alt="Sample image">
+                    <a>
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-lg-7 col-xl-8">
+
+                <!-- Post title -->
+                <h4 class="font-weight-bold mb-3"><strong>{{ blog.title }}</strong></h4>
+                <!-- Excerpt -->
+                <p class="dark-grey-text">{{ blog.description|striptags|truncatechars:100 }}</p>
+                <!-- Post data -->
+                <p>From <a class="font-weight-bold">{{ blog.category }}</a>, {{ blog.date|date:'M d Y'|upper }}</p>
+                <!-- Read more button -->
+                <a class="btn btn-primary btn-md mx-0 btn-rounded" href="{% url 'blog:detail' blog.id %}">Show Me
+                    More</a>
+
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+        <hr class="my-5">
+
+        <!--Section: Content-->
+        {% endfor %}
+    </section>
 </div>
-{% endfor %}
+
 
 {% endblock %}
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"></script>
-</body>
-</html>
