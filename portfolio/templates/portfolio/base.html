@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+    {% load static %}
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,15 +22,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./static/portfolio/custom.css">
 
-    <title>DEVELOPERMIND</title>
+    <link rel = "icon" href = "{% static 'portfolio/logo_developermind.ico' %}" type = "image/x-icon">
+
+    <title>&nbsp;&nbsp;DEVELOPERMIND</title>
 </head>
 <body>
 {% load static %}
 <!--Navbar -->
 <nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color">
-    <img src="{% static 'portfolio/Logo.png' %}" width="30" height="30" class="d-inline-block align-top"
+    <img src="{% static 'portfolio/logo_developermind.png' %}" width="30" height="30" class="d-inline-block align-top"
          alt="Dharshan's Logo">
-    <a class="navbar-brand" href="{% url 'home' %}">DEVELOPERMIND</a>
+    <a class="navbar-brand" href="{% url 'home' %}">&nbsp;&nbsp; DEVELOPERMIND</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
             aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -110,7 +113,7 @@
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© 2020 Copyright:
-        <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+        <a href="https://www.developermind.co.in/"> developermind.co.in</a>
     </div>
     <!-- Copyright -->
 
