@@ -5,16 +5,21 @@
 {% block content %}
 
 <!-- Jumbotron -->
-<div class="jumbotron card card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Others/gradient1.jpg);">
-  <div class="text-white text-center py-5 px-4">
-    <div>
-      <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong>A Place for learning Programming and new topics</strong></h2>
-      <p class="mx-5 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
-        optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos. Odit sed qui, dolorum!
-      </p>
-      <a class="btn btn-outline-white btn-md" href="{% url 'blog:all_blogs' %}"><i class="fas fa-laptop"></i> View Blogs</a>
+<div class="jumbotron card card-image"
+     style="background-image: url(https://mdbootstrap.com/img/Photos/Others/gradient1.jpg);">
+    <div class="text-white text-center py-5 px-4">
+        <div>
+            <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong>A Place for learning Programming and new
+                topics</strong></h2>
+            <p class="mx-5 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam,
+                voluptatem,
+                optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos. Odit sed
+                qui, dolorum!
+            </p>
+            <a class="btn btn-outline-white btn-md" href="{% url 'blog:all_blogs' %}"><i class="fas fa-laptop"></i> View
+                Blogs</a>
+        </div>
     </div>
-  </div>
 </div>
 <!-- Jumbotron -->
 
@@ -58,5 +63,44 @@
 </div>
 <!-- Card deck -->
 
+<h2 class="mt-5">Latest Blogs from Authors</h2>
+<hr>
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        {% for blog in blogs %}
+        <div {% if forloop.first %} class="carousel-item active" {% else %} class="carousel-item" {% endif %}>
+            <div class="card text-center deep-blue-gradient">
+                <div class="card-header">
+                    New and Featured
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ blog.title }}</h5>
+                    <p class="card-text">{{ blog.description|striptags|truncatechars:100 }}</p>
+                    <!-- Post data -->
+                    <p>From <a class="font-weight-bold">{{ blog.category }}</a>, {{ blog.date|date:'M d Y'|upper }}</p>
+                    <!-- Read more button -->
+                    <a class="btn btn-primary btn-md mx-0 btn-rounded" href="{% url 'blog:detail' blog.id %}">Show Me
+                        More</a>
+                </div>
+                <div class="card-footer text-muted">
+                    {{blog.get_time_diff}} ago
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"><i class="fas fa-caret-square-left fa-3x"></i></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"><i class="fas fa-caret-square-right fa-3x"></i></span>
+        <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+</div>
 
-{% endblock %}
+
+
+    {% endblock %}
