@@ -29,14 +29,10 @@
 <body>
 {% load static %}
 <!--Navbar -->
-<nav class="mb-1 navbar navbar-expand-lg #00695c teal darken-3">
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color">
     <img src="{% static 'portfolio/logo_developermind.png' %}" width="30" height="30" class="d-inline-block align-top"
          alt="Dharshan's Logo">
     <a class="navbar-brand" href="{% url 'home' %}">&nbsp;&nbsp; DEVELOPERMIND</a>
-    <button class="navbar-toggler #ff3d00 deep-orange darken-3" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
-            aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
         <ul class="navbar-nav ml-auto">
@@ -64,6 +60,13 @@
             </li>
         </ul>
     </div>
+
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
+            aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
 </nav>
 <!--/.Navbar -->
 <div class="container">
